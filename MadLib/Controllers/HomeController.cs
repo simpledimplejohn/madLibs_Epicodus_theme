@@ -5,29 +5,36 @@ namespace MadLib.Controllers
 {
   public class HomeController : Controller
   {
-    [Route("/hello")]
-    public string Hello() { return "Hello friend!"; } // a rout in our application
-    [Route("/goodbye")]
-    public string Goodbye() { return "Goodbye friend!"; } // a rout in our application
-
-    [Route("/")]
-    public ActionResult Letter()
-    {
-      LetterVariable myLetterVariable = new LetterVariable();
-      myLetterVariable.Recipient = "Lina";
-      myLetterVariable.Sender = "Jasmine";
-      return View(myLetterVariable);
-    }
     [Route("/form")]
     public ActionResult Form() { return View(); }
 
     [Route("/themadlib")]
-    public ActionResult TheMadLib(string recipient, string sender)
+    public ActionResult TheMadLib(
+      string nameOne,
+      string nameTwo,
+      string nameThree,
+      string companyOne,
+      string companyTwo,
+      string companyThree,
+      string jobOneAdj,
+      string jobTwoAdj,
+      string jobThreeAdj,
+      string bootCamp
+      )
     {
-      LetterVariable myLetterVariable = new LetterVariable();
-      myLetterVariable.Recipient = recipient;
-      myLetterVariable.Sender = sender;
-      return View(myLetterVariable);
+      MadLibVariable myMadLibVariable = new MadLibVariable();
+      myMadLibVariable.NameOne = nameOne;  //left side references MadLibVariable.cs, right side ref Form.cshtml
+      myMadLibVariable.NameTwo = nameTwo;
+      myMadLibVariable.NameThree = nameThree;
+      myMadLibVariable.CompanyOne = companyOne;
+      myMadLibVariable.CompanyTwo = companyTwo;
+      myMadLibVariable.CompanyThree = companyThree;
+      myMadLibVariable.JobOneAdj = jobOneAdj;
+      myMadLibVariable.JobTwoAdj = jobTwoAdj;
+      myMadLibVariable.JobThreeAdj = jobThreeAdj;
+      myMadLibVariable.BootCamp = bootCamp;
+
+      return View(myMadLibVariable);
     }
   }
 }
